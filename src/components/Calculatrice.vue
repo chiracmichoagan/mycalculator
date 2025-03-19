@@ -80,130 +80,58 @@ onBeforeUnmount(() => {
     document.removeEventListener('keydown', handleKeypress);
 });
 </script>
-
 <template>
     <div>
-        <div class="p-0 m-0 flex justify-center items-center min-h-screen select-none bg-[#ecf0f3]">
-            <div class="ml-7 p-5 rounded-lg shadow-[13px_13px_20px_#cbced1,-13px_-13px_20px_#ffffff]">
-                <div
-                    class="mb-2 w-auto h-18 text-4xl outline-none border-0 text-right pr-2 bg-[#ecf0f3] rounded-lg shadow-inner shadow-[#cbced1] shadow-[inset_-8px_-8px_8px_#ffffff]">
-                    <input type="text" v-model="screen" @keydown.enter="evalExpression" name="" id="" placeholder="0">
+        <div class="flex justify-center items-center min-h-screen select-none bg-[#ecf0f3]">
+            <div class="p-5 rounded-lg shadow-[13px_13px_20px_#cbced1,-13px_-13px_20px_#ffffff] w-full max-w-sm sm:max-w-md md:max-w-lg">
+                <div class="mb-2 w-full h-18 text-4xl outline-none border-0 text-right pr-2 bg-[#ecf0f3] rounded-lg shadow-inner shadow-[#cbced1] shadow-[inset_-8px_-8px_8px_#ffffff]">
+                    <input type="text" v-model="screen" @keydown.enter="evalExpression" placeholder="0" class="w-full outline-none bg-transparent" />
                 </div>
-                <div class="btns">
-                    <div class="row">
-                        <button
-                            class="w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  bg-pink-600 text-white hover:shadow-[inset_5px_5px_8px_#e60073,_inset_-5px_-5px_8px_#ff3399]"
-                            @click="backspace">CE</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="calculate('factorial')">x!</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('(')">(</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen(')')">)</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('%')">%</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100  bg-[#33cc33] text-white hover:shadow-[inset_5px_5px_8px_#2eb82e,_inset_-5px_-5px_8px_#33cc33]"
-                            @click="clearScreen">AC</button>
 
-                    </div>
+                <div class="grid grid-cols-4 gap-2">
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff] bg-pink-600 text-white hover:shadow-[inset_5px_5px_8px_#e60073,_inset_-5px_-5px_8px_#ff3399]" @click="backspace">CE</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('factorial')">x!</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('(')">(</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen(')')">)</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('%')">%</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 bg-[#33cc33] text-white" @click="clearScreen">AC</button>
                 </div>
-                <div class="btns">
-                    <div class="row">
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="calculate('sin')">sin</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white">7</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white">8</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="calculate('pi')">π</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('9')">9</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('/')">/</button>
 
-                    </div>
+                <div class="grid grid-cols-4 gap-2">
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('sin')">sin</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('7')">7</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('8')">8</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('pi')">π</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('9')">9</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('/')">/</button>
                 </div>
-                <div class="btns">
-                    <div class="row">
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="calculate('cos')">cos</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="calculate('log')">log</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('4')">4</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('5')">5</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('6')">6</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('*')">*</button>
 
-                    </div>
+                <div class="grid grid-cols-4 gap-2">
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('cos')">cos</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('4')">4</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('5')">5</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('6')">6</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('*')">*</button>
                 </div>
-                <div class="btns">
-                    <div class="row">
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="calculate('tan')">tan</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="calculate('sqrt')">√</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('1')">1</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('2')">2</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('3')">3</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('-')">-</button>
-                    </div>
+
+                <div class="grid grid-cols-4 gap-2">
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('tan')">tan</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('sqrt')">√</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('1')">1</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('2')">2</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('3')">3</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('-')">-</button>
                 </div>
-                <div class="btns">
-                    <div class="row">
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="calculate('e')">e</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="calculate('pow')">x
-                            <sup>y</sup></button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('0')">0</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('.')">.</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  bg-[#33ccff] text-white shadow-inner shadow-[#66d9ff] hover:shadow-inner hover:shadow-[#00ace6]"
-                            @click="evalExpression">=</button>
-                        <button
-                            class="btn w-[60px] h-[30px] text-[16px] border-none outline-none m-[5px] rounded transition duration-100 shadow-[5px_5px_8px_#00000020,-5px_-5px_8px_#ffff]  hover:shadow-[inset_5px_5px_8px_rgba(16,16,16,0.1),inset_-5px_-5px_8px_#fff] hover:bg-white"
-                            @click="appendToScreen('+')">+</button>
-                    </div>
+
+                <div class="grid grid-cols-4 gap-2">
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('e')">e</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('pow')">x<sup>y</sup></button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('0')">0</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('.')">.</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 bg-[#33ccff] text-white" @click="evalExpression">=</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('+')">+</button>
                 </div>
             </div>
         </div>
-
     </div>
-
 </template>
