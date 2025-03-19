@@ -93,43 +93,43 @@ onBeforeUnmount(() => {
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('factorial')">x!</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('(')">(</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen(')')">)</button>
-                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('%')">%</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 bg-[#33cc33] text-white" @click="clearScreen">AC</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('tan')">tan</button>
                 </div>
 
                 <div class="grid grid-cols-4 gap-2">
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('sin')">sin</button>
-                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('7')">7</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('9')">9</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('8')">8</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('pi')">π</button>
-                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('9')">9</button>
-                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('/')">/</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('cos')">cos</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('7')">7</button>
                 </div>
-
+                
                 <div class="grid grid-cols-4 gap-2">
-                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('cos')">cos</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('/')">/</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('4')">4</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('5')">5</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('6')">6</button>
-                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('*')">*</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('%')">%</button>
                 </div>
-
+                
                 <div class="grid grid-cols-4 gap-2">
-                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('tan')">tan</button>
-                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('sqrt')">√</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('*')">*</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('1')">1</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('2')">2</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('3')">3</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('-')">-</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('sqrt')">√</button>
                 </div>
 
                 <div class="grid grid-cols-4 gap-2">
-                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('e')">e</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('+')">+</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('pow')">x<sup>y</sup></button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('0')">0</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('.')">.</button>
                     <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 bg-[#33ccff] text-white" @click="evalExpression">=</button>
-                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="appendToScreen('+')">+</button>
+                    <button class="btn w-full h-[40px] text-[16px] border-none outline-none rounded transition duration-100 hover:bg-white" @click="calculate('e')">e</button>
                 </div>
             </div>
         </div>
